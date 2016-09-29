@@ -2,6 +2,7 @@ package com.example.touchgraphics;
 
 import android.content.Context;
 import android.graphics.Canvas;
+import android.graphics.Color;
 import android.graphics.Paint;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -15,17 +16,21 @@ public class MainActivity extends AppCompatActivity {
         setContentView(new DrawShape(getApplicationContext()));
     }
     class DrawShape extends View {
-
-        DrawShape (Context context) {
-        super(context);
+        DrawShape(Context context) {
+            super(context);
         }
-
         protected void onDraw(Canvas canvas) {
             super.onDraw(canvas);
             float cx = getWidth()/2.0f;
             float cy = getHeight()/2.0f;
             Paint paint = new Paint();
-            canvas.drawCircle(cx,cy,50,paint);
+            paint.setStrokeWidth(7);
+            paint.setColor(Color.BLUE);
+            paint.setStyle(Paint.Style.STROKE);
+            canvas.drawCircle(cx,cy,200,paint);
+            paint.setColor(Color.MAGENTA);
+            paint.setStyle(Paint.Style.FILL);
+            canvas.drawRect(10,10,210,160,paint);
         }
     }
 }
